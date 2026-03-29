@@ -1,13 +1,25 @@
 function convertToRoman(num) {
-  	const obj = {
-      0:['M',1000], 
-      1:['D', 500], 
-      2:['C', 100], 
-      3:['L', 50], 
-      4:['X', 10], 
-      5:['V', 5], 
-      6:['I', 1]
-    };
+  	const romanMatrix = [
+    ['M', 1000], ['CM', 900], ['D', 500], ['CD', 400],
+    ['C', 100],  ['XC', 90],  ['L', 50],  ['XL', 40],
+    ['X', 10],   ['IX', 9],   ['V', 5],   ['IV', 4],
+    ['I', 1]
+  ];
+
+  let result = '';
+
+  for (let i = 0; i < romanMatrix.length; i++) {
+    const [char, value] = romanMatrix[i];
+    
+    // While the number is greater than or equal to the current Roman value
+    while (num >= value) {
+      result += char; // Add the letter to our string
+      num -= value;   // Subtract the value from our total
+    }
+  }
+
+  return result;
+}
 
   //your code here
 
